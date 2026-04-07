@@ -56,4 +56,4 @@ A powerful, responsive Hub Management System (HMS) web application built using *
 The application is designed to exactly match the provided screenshots (`1.1.png` - `1.10.png`), ensuring 100% fidelity with the original design specs.
 
 ---
-Built with ❤️ by Antigravity
+Built with ❤️ by Yash Chauhan
