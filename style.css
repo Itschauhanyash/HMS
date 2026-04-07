@@ -63,8 +63,8 @@ body, html {
 
 .login-card {
     background: var(--white);
-    padding: 40px;
-    width: 90%;
+    padding: 30px 25px;
+    width: calc(100% - 40px);
     max-width: 400px;
     box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
     border-radius: 2px;
@@ -254,15 +254,17 @@ body, html {
 
 .facility-choice-card {
     background-color: var(--teal-main);
-    padding: 15px 30px;
+    padding: 20px;
     display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     gap: 15px;
     color: white;
-    width: 90%;
+    width: calc(100% - 40px);
     max-width: 600px;
+    box-sizing: border-box;
 }
 
 .auth-disabled {
@@ -359,12 +361,15 @@ body, html {
 
 /* Feedback Box */
 .feedback-box {
-    padding: 40px;
+    padding: 40px 20px;
     border: 1px solid #ddd;
-    font-size: 60px; /* Large font for status */
     margin-top: 20px;
     position: relative;
-    min-height: 200px;
+    min-height: 150px;
+    height: auto; /* Allow dynamic height increase for HHDs */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .feedback-box.success {
@@ -415,60 +420,65 @@ body, html {
     .login-header {
         padding: 10px 20px;
     }
-    .feedback-box {
-        padding: 30px 20px;
-        min-height: 150px;
-    }
-    .text-xlarge {
-        font-size: 32px;
-    }
-    .text-large {
-        font-size: 28px;
-    }
-    .text-medium {
-        font-size: 24px;
-    }
-    .app-title {
-        font-size: 16px;
+    .header-left {
+        gap: 10px;
     }
 }
 
 @media (max-width: 480px) {
     .login-card {
-        padding: 25px 20px;
+        padding: 20px 15px;
     }
     .warning-banner {
-        padding: 10px 15px;
-        font-size: 12px;
+        padding: 10px;
+        font-size: 11px;
+        width: calc(100% - 40px);
+    }
+    .footer-banner {
+        font-size: 11px;
+        flex-direction: column;
+        padding: 15px 10px;
     }
     .facility-choice-card {
-        padding: 15px;
         flex-direction: column;
         text-align: center;
     }
-    .feedback-box {
-        padding: 20px;
-        min-height: 120px;
+    .app-header {
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px;
     }
-    .text-xlarge {
-        font-size: 24px;
+    .header-right {
+        width: 100%;
+        justify-content: space-between;
     }
-    .text-large {
-        font-size: 20px;
-    }
-    .text-medium {
-        font-size: 18px;
-    }
-    #main-content {
-        padding: 15px;
+    #facility-select {
+        max-width: 180px;
+        font-size: 12px;
     }
     .view-title {
-        font-size: 20px;
+        font-size: 18px;
     }
     .sidebar {
-        width: 80%; /* Almost full width on mobile */
+        width: 100%; /* Full screen overlay on mobile */
     }
     .sidebar.hidden {
         transform: translateX(-100%);
+    }
+    #main-content {
+        padding: 15px 10px;
+    }
+}
+
+/* HHD Portrait Specifics */
+@media (max-width: 320px) {
+    .login-header .logo span {
+        font-size: 18px !important;
+    }
+    .feedback-box {
+        padding: 15px;
+    }
+    .text-xlarge {
+        font-size: 20px;
     }
 }
