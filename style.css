@@ -1,0 +1,395 @@
+/* Premium Styles for HMS */
+
+:root {
+    --teal-main: #009688;
+    --teal-dark: #00796b;
+    --pink-btn: #e91e63;
+    --green-success: #dff0d8; /* Matching the screenshot's pale green */
+    --red-error: #f2dede; /* Matching the screenshot's pale red */
+    --grey-bg: #e5e5e5;
+    --white: #ffffff;
+    --fk-blue: #2874f0;
+    --fk-yellow: #ffee00;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--grey-bg);
+    height: 100%;
+}
+
+.section {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Login Styles */
+#login-section {
+    background-color: #f1f3f6;
+}
+
+.login-header {
+    background-color: var(-- white);
+    padding: 10px 50px;
+    box-shadow: 0 1px 1px 0 rgba(0,0,0,.11);
+}
+
+.login-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.warning-banner {
+    background-color: #fff3e0;
+    border: 1px solid #ffe0b2;
+    padding: 15px 30px;
+    margin-bottom: 30px;
+    text-align: center;
+    font-size: 14px;
+    max-width: 600px;
+}
+
+.red-text {
+    color: red;
+    font-weight: bold;
+}
+
+.login-card {
+    background: var(--white);
+    padding: 40px;
+    width: 400px;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
+    border-radius: 2px;
+}
+
+.login-card h2 {
+    margin: 0;
+    text-align: center;
+    font-weight: 400;
+}
+
+.subtitle {
+    text-align: center;
+    color: #878787;
+    margin-bottom: 20px;
+    font-size: 12px;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #dbdbdb;
+    border-radius: 2px;
+    box-sizing: border-box;
+}
+
+#login-btn {
+    width: 100px;
+    padding: 10px;
+    background-color: #2874f0;
+    color: white;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.forgot-link {
+    display: block;
+    text-align: right;
+    font-size: 12px;
+    color: #2874f0;
+    text-decoration: none;
+}
+
+.login-feedback {
+    background-color: var(--red-error);
+    color: #a94442;
+    border: 1px solid #ebccd1;
+    padding: 10px;
+    border-radius: 2px;
+    margin-bottom: 20px;
+    font-size: 13px;
+    text-align: center;
+}
+
+.login-footer {
+    padding: 20px;
+}
+
+.footer-banner {
+    background-color: #2874f0;
+    color: white;
+    padding: 15px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    position: relative;
+}
+
+/* App Shell Styles */
+.app-header {
+    background-color: var(--teal-main);
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.header-left button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.app-title {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#facility-select {
+    background-color: rgba(255,255,255,0.1);
+    color: white;
+    border: 1px solid rgba(255,255,255,0.3);
+    padding: 5px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#facility-select option {
+    color: black;
+}
+
+#facility-select:disabled {
+    background-color: rgba(255,255,255,0.05);
+    color: rgba(255,255,255,0.5);
+    border-color: rgba(255,255,255,0.1);
+    cursor: not-allowed;
+}
+
+/* Main Layout */
+.main-layout {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+.sidebar {
+    position: absolute;
+    top: 50px; /* Below header */
+    left: 0;
+    width: 250px;
+    height: calc(100% - 50px);
+    background-color: white;
+    border-right: 1px solid #ddd;
+    overflow-y: auto;
+    transition: transform 0.3s ease;
+    z-index: 1000;
+}
+
+.sidebar.hidden {
+    transform: translateX(-250px);
+}
+
+.sidebar-section {
+    padding: 15px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.sidebar-section h3 {
+    margin: 0 0 10px 0;
+    font-size: 14px;
+    color: #333;
+}
+/* Select Facility View (1.1.png) */
+.centered-view {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 60%; /* Position roughly in the center */
+}
+
+.select-hint {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.facility-choice-card {
+    background-color: var(--teal-main);
+    padding: 15px 30px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: white;
+}
+
+.auth-disabled {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+#logout-btn {
+    background-color: white;
+    color: #333;
+    border: none;
+    padding: 5px 15px;
+    border-radius: 2px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+#inner-facility-select {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    font-size: 14px;
+}
+
+.sidebar-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-section li {
+    padding: 8px 10px;
+    font-size: 13px;
+    color: #666;
+    cursor: default;
+}
+
+.sidebar-section li::before {
+    content: "+ ";
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.clickable li {
+    cursor: pointer;
+}
+
+.clickable li:hover {
+    background-color: #f5f5f5;
+}
+
+.clickable li.active {
+    color: var(--teal-main);
+    font-weight: bold;
+}
+
+/* Main Content Area */
+#main-content {
+    flex: 1;
+    padding: 30px;
+    background-color: #f5f5f5;
+}
+
+.view-title {
+    margin-top: 0;
+    font-weight: normal;
+    color: #333;
+    font-size: 24px;
+}
+
+.scan-section, .scan-row {
+    margin-bottom: 30px;
+}
+
+.scan-section label, .scan-row label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.scan-input {
+    width: 100%;
+    max-width: 400px;
+    padding: 10px;
+    border: 1px solid #00c4cc; /* Matching the blue/teal focus border */
+    border-radius: 2px;
+    font-size: 16px;
+    outline: none;
+}
+
+.scan-input.active {
+    background-color: #d8f3ec; /* Pale green when active in screenshot 1.2 */
+}
+
+/* Feedback Box */
+.feedback-box {
+    padding: 40px;
+    border: 1px solid #ddd;
+    font-size: 60px; /* Large font for status */
+    margin-top: 20px;
+    position: relative;
+    min-height: 200px;
+}
+
+.feedback-box.success {
+    background-color: var(--green-success);
+}
+
+.feedback-box.error {
+    background-color: var(--red-error);
+    font-size: 30px; /* Error text is slightly smaller in 1.10 but still big */
+}
+
+.skip-btn {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    background-color: var(--pink-btn);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.dropdown-placeholder {
+    margin-top: 20px;
+}
+
+.small-hint {
+    display: block;
+    font-size: 10px;
+    color: #888;
+    margin-top: 5px;
+}

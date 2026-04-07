@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hub Management System (HMS)</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Login Section -->
+    <div id="login-section" class="section">
+        <header class="login-header">
+            <div class="logo">
+                <span style="color: #2874f0; font-weight: bold; font-size: 24px;">Flipkart</span>
+                <span class="bag-icon">🛍️</span>
+            </div>
+        </header>
+        <div class="login-container">
+            <div class="warning-banner">
+                <p><strong>Please do not share your password with anyone.</strong></p>
+                <p>Any user found sharing password with any one whatsoever case may be,</p>
+                <p class="red-text">strict disciplinary action including termination will be initiated against the
+                    defaulter.</p>
+            </div>
+            <div class="login-card">
+                <h2>Login</h2>
+                <p class="subtitle">Enter LDAP credentials</p>
+                <div class="input-group">
+                    <label>User Name</label>
+                    <input type="text" id="username" placeholder="User Name">
+                </div>
+                <div class="input-group">
+                    <label>Password</label>
+                    <input type="password" id="password" placeholder="Password">
+                </div>
+                <div id="login-error" class="login-feedback" style="display: none;"></div>
+                <button id="login-btn">Submit</button>
+                <a href="#" class="forgot-link">Forgot/Update password?</a>
+            </div>
+        </div>
+        <footer class="login-footer">
+            <div class="footer-banner">
+                <span class="info-icon">ℹ️</span>
+                Login issues? Contact IT team at <span class="email-link">askit@flipkart.com</span>
+                <span class="close-icon">×</span>
+            </div>
+        </footer>
+    </div>
+
+    <!-- App Shell Section (Hidden initially) -->
+    <div id="app-shell" class="section" style="display: none;">
+        <header class="app-header">
+            <div class="header-left">
+                <button id="menu-toggle">☰</button>
+                <span class="app-title">Hub System</span>
+            </div>
+            <div class="header-right">
+                <span class="user-icon">👤</span>
+                <select id="facility-select">
+                    <option value="" disabled selected>Select Facility</option>
+                    <option value="MotherHub_STV_BTS">MotherHub_STV_BTS</option>
+                    <option value="MotherHub_STV">MotherHub_STV</option>
+                </select>
+            </div>
+        </header>
+
+        <div class="main-layout">
+            <!-- Sidebar -->
+            <nav id="sidebar" class="sidebar">
+                <div class="sidebar-section">
+                    <h3>Automated External Sorter</h3>
+                    <ul>
+                        <li>In-feed Scan</li>
+                        <li>Sortation / Bagging</li>
+                        <li>Unblock Chute</li>
+                    </ul>
+                </div>
+                <div class="sidebar-section">
+                    <h3>Dock Management</h3>
+                    <ul>
+                        <li>Dock In</li>
+                        <li>Dock Out</li>
+                        <li>Dock Allocation</li>
+                        <li>Geo-Fence Dashboard</li>
+                    </ul>
+                </div>
+                <div class="sidebar-section">
+                    <h3>Sortation</h3>
+                    <ul>
+                        <li>Sortation</li>
+                        <li>Pick from Staging Area</li>
+                    </ul>
+                </div>
+                <div class="sidebar-section">
+                    <h3>Labels</h3>
+                    <ul>
+                        <li>Bag Labels</li>
+                    </ul>
+                </div>
+                <div class="sidebar-section">
+                    <h3>Return Handover</h3>
+                    <ul>
+                        <li>Inscan</li>
+                        <li>Outscan</li>
+                        <li>Receive 3PL Shipment</li>
+                    </ul>
+                </div>
+                <div class="sidebar-section">
+                    <h3>Inbound staging</h3>
+                    <ul>
+                        <li>Put</li>
+                        <li>Pick</li>
+                    </ul>
+                </div>
+                <div class="sidebar-section">
+                    <h3>Outbound staging</h3>
+                    <ul class="clickable">
+                        <li id="nav-put">Put</li>
+                        <li>OutboundPick</li>
+                        <li>TrackItems</li>
+                        <li>TrackStagingDetails</li>
+                    </ul>
+                </div>
+                <div class="sidebar-section">
+                    <h3>TCBasedHandover</h3>
+                    <ul>
+                        <li>Pick</li>
+                    </ul>
+                </div>
+                <div class="sidebar-section">
+                    <h3>Profiler machine</h3>
+                    <ul>
+                        <li>Scan</li>
+                    </ul>
+                </div>
+                <div id="nav-logout" class="sidebar-section clickable">
+                    <h3 style="color: #d32f2f;">Logout</h3>
+                </div>
+            </nav>
+
+            <!-- Main Content Area -->
+            <main id="main-content">
+                <!-- Select Facility View (1.1.png) -->
+                <div id="select-facility-view" class="centered-view">
+                    <p class="select-hint">Please select facility.</p>
+                    <div class="facility-choice-card">
+                        <span class="auth-disabled">AuthDisabled</span>
+                        <button id="logout-btn">Logout</button>
+                        <select id="inner-facility-select">
+                            <option value="" disabled selected>Select Facility</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Idle View -->
+                <div id="idle-view">
+                    <div class="scan-section">
+                        <label>Scan Station Barcode</label>
+                        <input type="text" id="station-barcode" class="scan-input active">
+                        <div class="dropdown-placeholder">
+                            <select disabled>
+                                <option>Select Processing Area</option>
+                            </select>
+                            <span class="hint-text">Please Select processing Area first</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Put Flow View -->
+                <div id="put-view" style="display: none;">
+                    <h2 class="view-title">Put Item</h2>
+                    <div class="scan-row">
+                        <label id="scan-label">Scan Item</label>
+                        <input type="text" id="scan-input" class="scan-input" autocomplete="off">
+                        <span id="scan-id-hint" class="small-hint"></span>
+                    </div>
+
+                    <!-- Feedback Box -->
+                    <div id="feedback-box" class="feedback-box" style="display: none;">
+                        <div id="feedback-content"></div>
+                        <button id="skip-btn" class="skip-btn" style="display: none;">Skip</button>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
