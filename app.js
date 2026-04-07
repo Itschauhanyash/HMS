@@ -73,11 +73,11 @@ function handleFacilityChange(e) {
     const val = e.target.value;
     state.facility = val;
     facilitySelect.value = val;
-    innerFacilitySelect.value = val;
+    // Don't try to set innerFacilitySelect.value as it was removed by USER
     
     // Mute/Disable dropdowns after selection
     facilitySelect.disabled = true;
-    innerFacilitySelect.disabled = true;
+    if (innerFacilitySelect) innerFacilitySelect.disabled = true;
 
     console.log("Facility changed to:", val);
     if (val) {
@@ -134,6 +134,7 @@ function switchView(view) {
     selectFacilityView.style.display = 'none';
     idleView.style.display = 'none';
     putView.style.display = 'none';
+    feedbackBox.classList.remove('text-xlarge', 'text-large', 'text-medium', 'success', 'error');
 
     if (view === 'select-facility') {
         selectFacilityView.style.display = 'flex';
@@ -156,6 +157,7 @@ function resetPutFlow() {
     scanInput.placeholder = '';
     scanIdHint.innerText = '';
     feedbackBox.style.display = 'none';
+    feedbackBox.classList.remove('text-xlarge', 'text-large', 'text-medium', 'success', 'error');
     skipBtn.style.display = 'none';
     scanInput.focus();
 }
@@ -203,28 +205,28 @@ function processShipmentScan(shipmentId) {
     scanIdHint.innerText = shipmentId;
 
     feedbackBox.style.display = 'block';
-    feedbackBox.className = 'feedback-box success'; // Light green bg
+    feedbackBox.classList.remove('success', 'error', 'text-xlarge', 'text-large', 'text-medium');
+    feedbackBox.classList.add('success', 'text-large');
     feedbackContent.innerHTML = `Put to N-K6 | MotherHub_CSK and scan barcode`;
-    feedbackBox.style.fontSize = '40px'; // Matching big text in 1.6.png
 
     skipBtn.style.display = 'block';
 }
 
 function processBinScan(binId) {
+    feedbackBox.classList.remove('success', 'error', 'text-xlarge', 'text-large', 'text-medium');
+    
     if (binId === 'N-K6') {
         // Success (1.8.png)
-        feedbackBox.className = 'feedback-box success';
+        feedbackBox.classList.add('success', 'text-xlarge');
         feedbackContent.innerHTML = `${state.currentShipment} <br> put confirmed`;
-        feedbackBox.style.fontSize = '60px';
         skipBtn.style.display = 'none';
 
         state.scanStep = 'waiting-for-shipment';
         scanLabel.innerText = 'Scan Item';
     } else {
         // Wrong ID (1.10.png)
-        feedbackBox.className = 'feedback-box error';
+        feedbackBox.classList.add('error', 'text-medium');
         feedbackContent.innerHTML = `Incorrect barcode scanned: ${binId}`;
-        feedbackBox.style.fontSize = '30px';
         skipBtn.style.display = 'none';
 
         state.scanStep = 'waiting-for-shipment';
@@ -234,9 +236,10 @@ function processBinScan(binId) {
 
 function handleSkip() {
     // Cancel (1.9.png)
-    feedbackBox.className = 'feedback-box success'; 
+    feedbackBox.style.display = 'block';
+    feedbackBox.classList.remove('success', 'error', 'text-xlarge', 'text-large', 'text-medium');
+    feedbackBox.classList.add('success', 'text-xlarge');
     feedbackContent.innerHTML = `Put cancelled`;
-    feedbackBox.style.fontSize = '60px';
     skipBtn.style.display = 'none';
 
     state.scanStep = 'waiting-for-shipment';

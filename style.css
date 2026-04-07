@@ -64,7 +64,8 @@ body, html {
 .login-card {
     background: var(--white);
     padding: 40px;
-    width: 400px;
+    width: 90%;
+    max-width: 400px;
     box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
     border-radius: 2px;
 }
@@ -255,9 +256,13 @@ body, html {
     background-color: var(--teal-main);
     padding: 15px 30px;
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     align-items: center;
     gap: 15px;
     color: white;
+    width: 90%;
+    max-width: 600px;
 }
 
 .auth-disabled {
@@ -368,7 +373,18 @@ body, html {
 
 .feedback-box.error {
     background-color: var(--red-error);
-    font-size: 30px; /* Error text is slightly smaller in 1.10 but still big */
+}
+
+.text-xlarge {
+    font-size: 60px;
+}
+
+.text-large {
+    font-size: 40px;
+}
+
+.text-medium {
+    font-size: 30px;
 }
 
 .skip-btn {
@@ -392,4 +408,67 @@ body, html {
     font-size: 10px;
     color: #888;
     margin-top: 5px;
+}
+
+/* Responsive Media Queries */
+@media (max-width: 768px) {
+    .login-header {
+        padding: 10px 20px;
+    }
+    .feedback-box {
+        padding: 30px 20px;
+        min-height: 150px;
+    }
+    .text-xlarge {
+        font-size: 32px;
+    }
+    .text-large {
+        font-size: 28px;
+    }
+    .text-medium {
+        font-size: 24px;
+    }
+    .app-title {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .login-card {
+        padding: 25px 20px;
+    }
+    .warning-banner {
+        padding: 10px 15px;
+        font-size: 12px;
+    }
+    .facility-choice-card {
+        padding: 15px;
+        flex-direction: column;
+        text-align: center;
+    }
+    .feedback-box {
+        padding: 20px;
+        min-height: 120px;
+    }
+    .text-xlarge {
+        font-size: 24px;
+    }
+    .text-large {
+        font-size: 20px;
+    }
+    .text-medium {
+        font-size: 18px;
+    }
+    #main-content {
+        padding: 15px;
+    }
+    .view-title {
+        font-size: 20px;
+    }
+    .sidebar {
+        width: 80%; /* Almost full width on mobile */
+    }
+    .sidebar.hidden {
+        transform: translateX(-100%);
+    }
 }
